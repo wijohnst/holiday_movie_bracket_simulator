@@ -10,8 +10,6 @@ export default function App() {
 
   // const [ movieData, setMovieData ] = useState(mockData())
   
-  
-
   return (
     <ViewProvider>
       <Layout />
