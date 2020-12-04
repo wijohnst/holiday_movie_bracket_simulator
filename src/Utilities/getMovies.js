@@ -7,7 +7,7 @@ export function getMovieData(queryString){
 
     let data = axios({
         method: 'get',
-        url: `http://www.omdbapi.com/?apikey=${key}&t=${queryString}`
+        url: `https://www.omdbapi.com/?apikey=${key}&t=${queryString}`
     })
     .then((response) => response.data)
     .catch((error) => console.log(error))
@@ -32,10 +32,10 @@ export default function getMovies(){
         "The Santa Clause",
         "Just Friends",
         "Rudolph the Red-Nosed Reindeer",
-        "How the Grinch Stole Christmas (2000)",
-        "A Christmas Carol (2009)",
-        "A Muppet Christmas Carol",
-        "The Grinch (2018)",
+        "How the Grinch Stole Christmas",
+        "A Christmas Carol",
+        "The Muppet Christmas Carol",
+        "The Grinch",
         "Love Actually",
         "The Knight Before Christmas",
         "A Christmas Prince",
@@ -44,13 +44,14 @@ export default function getMovies(){
         "The Holiday",
         "Last Christmas",
         "The Polar Express",
-        "Miracle on 34th St (1994)",
+        "Miracle on 34th Street",
         "Bad Santa",
         "Ernest Saves Christmas",
         "The Preacher's Wife",
-        "Krampus	Frosty the Snowman",
+        "Krampus",	
+        "Frosty the Snowman",
         "Gremlins",
-        "How The Grinch Stole Christmas (1966)",
+        "How The Grinch Stole Christmas!",
     ]
 }
 
