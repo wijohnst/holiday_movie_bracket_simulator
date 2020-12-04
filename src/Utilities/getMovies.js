@@ -7,7 +7,7 @@ export function getMovieData(queryString){
 
     let data = axios({
         method: 'get',
-        url: `http://www.omdbapi.com/?apikey=${key}&t=${queryString}`
+        url: `https://www.omdbapi.com/?apikey=${key}&t=${queryString}`
     })
     .then((response) => response.data)
     .catch((error) => console.log(error))
