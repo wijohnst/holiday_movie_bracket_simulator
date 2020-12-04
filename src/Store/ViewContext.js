@@ -9,7 +9,7 @@ let reducer = (viewData, newViewData) =>{
 }
 
 const initialState = {
-    selection : "Test"
+    selection : [undefined,undefined]
 }
 
 const ViewContext = React.createContext();

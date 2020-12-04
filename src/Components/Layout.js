@@ -3,10 +3,12 @@ import styled from 'styled-components'
 
 import { ViewContext } from '../Store/ViewContext'
 
+import Controls from './Controls'
+import Deathmatch from './Deathmatch'
 import Header from './Header'
 
 const AppWrapper = styled.section`
-    height: 100%;
+    /* height: 100%; */
 `
 
 export default function Layout(props) {
@@ -15,9 +17,10 @@ export default function Layout(props) {
     const { viewData } = useContext(ViewContext);
 
     return (
-        <AppWrapper>
+        <>
             <Header />
-            {children}
-        </AppWrapper>
+            <Deathmatch />
+            <Controls />
+        </>
     )
 }
