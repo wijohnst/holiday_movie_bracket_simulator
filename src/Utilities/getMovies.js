@@ -1,16 +1,18 @@
 import axios from 'axios'
 import apiKey from './apiKey'
 
-export function getMovieData(title){
+export function getMovieData(queryString){
 
     const key = apiKey();
 
-    axios({
+    let data = axios({
         method: 'get',
-        url: `http://www.omdbapi.com/?apikey=${key}&t=It's+a+wonderful+life`
+        url: `http://www.omdbapi.com/?apikey=${key}&t=${queryString}`
     })
-    .then((response) => response)
+    .then((response) => response.data)
     .catch((error) => console.log(error))
+
+    return data;
 }
 
 export default function getMovies(){
@@ -50,4 +52,8 @@ export default function getMovies(){
         "Gremlins",
         "How The Grinch Stole Christmas (1966)",
     ]
+}
+
+export function formatQueryString(movieTitle){
+    return movieTitle.replace(/\s/g,"+");
 }

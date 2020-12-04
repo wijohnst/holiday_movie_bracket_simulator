@@ -8,10 +8,10 @@ import getMovies from '../Utilities/getMovies'
 const ComponentWrapper = styled.section`
     width: 100%;
     height: 100%;
-    background-color: lightgreen;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem;
 `
 export default function MovieSelect(props) {
 
