@@ -29,6 +29,15 @@ const MetaScore = styled.span`
         margin-right: .25rem;
     }
 `
+const ImdbScore = styled.span`
+    margin-top: .5rem;
+    font-size: 2rem;
+    font-weight: 300;
+    &:before{
+        content: "IMDB Score:";
+        margin-right: .25rem;
+    }
+`
 const ReleaseYear = styled.span``
 
 export default function MovieCard(props) {
@@ -49,6 +58,7 @@ export default function MovieCard(props) {
                 <ReleaseYear>{movieData.Year}</ReleaseYear>
                 <Image src={movieData.Poster} alt={`Poster for ${movieData.Title}`} />
                 <MetaScore>{movieData.Metascore}</MetaScore>
+                <ImdbScore>{movieData.imdbRating}</ImdbScore>
             </Card>
             : <p>Getting Movie Data...</p>)}
         </ComponentWrapper>
