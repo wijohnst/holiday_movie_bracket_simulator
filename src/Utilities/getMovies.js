@@ -21,7 +21,7 @@ export default function getMovies(){
         "Elf",
         "Die Hard",
         "Home Alone",
-        "Home Alone 2",
+        "Home Alone 2 : Lost in New York",
         "Christmas Vacation",
         "Scrooged",
         "A Charlie Brown Christmas",
