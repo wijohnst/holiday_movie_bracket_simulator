@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import useMedia from '../Utilities/useMedia'
+import getDevice from '../Utilities/getDevice'
+
 import Movie from './Movie'
 
 const ComponentWrapper = styled.section`
     display: flex;
+    flex-direction: ${({flexDirection}) => flexDirection};
     padding: 1rem;
 `
 const Versus = styled.div`
@@ -18,8 +22,17 @@ const Versus = styled.div`
 `
 
 export default function Deathmatch() {
+
+    const isMobile = useMedia(
+        [getDevice('browser'),getDevice('tablet'),getDevice('mobile')],
+        [false,false,true],
+        false
+    )
+
     return (
-        <ComponentWrapper>
+        <ComponentWrapper
+            flexDirection={(isMobile ? "column" : "row")}
+        >
             <Movie position={0} />
             <Versus>VS.</Versus>
             <Movie position={1} />

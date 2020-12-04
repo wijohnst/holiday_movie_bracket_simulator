@@ -3,6 +3,9 @@ import styled from 'styled-components'
 
 import { ViewContext } from '../Store/ViewContext'
 
+import useMedia from '../Utilities/useMedia'
+import getDevice from '../Utilities/getDevice'
+
 import getMovies from '../Utilities/getMovies'
 
 const ComponentWrapper = styled.section`
@@ -11,7 +14,8 @@ const ComponentWrapper = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin: ${({margin}) => margin};
+    margin-bottom: 1rem;
 `
 export default function MovieSelect(props) {
 
@@ -27,8 +31,16 @@ export default function MovieSelect(props) {
         setViewData({selection : spread});
     }
 
+    const isMobile = useMedia(
+        [getDevice('browser'),getDevice('tablet'),getDevice('mobile')],
+        [false,false,true],
+        false
+    )
+
     return (
-        <ComponentWrapper>
+        <ComponentWrapper
+            margin={(isMobile ? "none" : "1rem")}
+        >
             <select ref={selectRef} onChange={() => handleSelection(position)}>
                 <option>{(position === 0 ? "Pick your first movie." : "Pick your second movie.")}</option>
                 {getMovies().map((movie,index) => <option key={`option-${index}`}>{movie}</option>)}

@@ -6,7 +6,6 @@ import { formatQueryString, getMovieData } from '../Utilities/getMovies'
 const ComponentWrapper = styled.section`
     color: white;
     padding: .25rem;
-    
 `
 const Card = styled.section`
     display: flex;
