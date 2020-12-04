@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
+import useMedia from '../Utilities/useMedia'
+import getDevice from '../Utilities/getDevice'
+
 import { ViewContext } from '../Store/ViewContext'
 import MovieCard from './MovieCard';
 
@@ -8,7 +11,7 @@ const ComponentWrapper = styled.section`
     width: 100%;
     height: 100%;
     border: solid thin white;
-    margin: 1rem;
+    margin: ${({margin}) => margin};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,8 +30,16 @@ export default function Movie(props) {
         }
     },[selection])
 
+    const isMobile = useMedia(
+        [getDevice('browser'),getDevice('tablet'),getDevice('mobile')],
+        [false,false,true],
+        false
+    )
+
     return (
-        <ComponentWrapper>
+        <ComponentWrapper
+            margin={(isMobile ? "none" : "1rem")}
+        >
            {(movie ? <MovieCard target={movie} /> : <p>Select a movie to begin.</p>)}
         </ComponentWrapper>
     )
