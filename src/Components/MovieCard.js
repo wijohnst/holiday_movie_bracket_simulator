@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
+import useMedia from '../Utilities/useMedia'
+import getDevice from '../Utilities/getDevice'
+
 import { formatQueryString, getMovieData } from '../Utilities/getMovies'
 
 const ComponentWrapper = styled.section`
     color: white;
-    padding: .25rem;
+    padding: .5rem;
 `
 const Card = styled.section`
     display: flex;
@@ -15,6 +18,8 @@ const Card = styled.section`
 `
 const Title = styled.span`
     font-size: 3rem;
+    white-space: ${({whiteSpace}) => whiteSpace};
+    text-align: center;
 `
 const Image = styled.img`
     height: 300px;
@@ -49,11 +54,21 @@ export default function MovieCard(props) {
         getMovieData(queryString).then(data => setMovieData(data));
     },[target])
 
+    const isMobile = useMedia(
+        [getDevice('browser'),getDevice('tablet'),getDevice('mobile')],
+        [false,false,true],
+        false
+    )
+
     return (
         <ComponentWrapper>
             {(movieData ?
             <Card> 
-                <Title>{movieData.Title}</Title>
+                <Title
+                    whiteSpace={(isMobile ? "" : "nowrap")}
+                >
+                    {movieData.Title}
+                </Title>
                 <ReleaseYear>{movieData.Year}</ReleaseYear>
                 <Image src={movieData.Poster} alt={`Poster for ${movieData.Title}`} />
                 <MetaScore>{movieData.Metascore}</MetaScore>

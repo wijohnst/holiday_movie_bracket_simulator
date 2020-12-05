@@ -10,6 +10,8 @@ const ComponentWrapper = styled.section`
     display: flex;
     flex-direction: ${({flexDirection}) => flexDirection};
     padding: 1rem;
+    justify-content: center;
+    align-items: center;
 `
 const Versus = styled.div`
     font-family: 'Metal Mania', cursive;
